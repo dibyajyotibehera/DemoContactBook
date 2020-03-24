@@ -10,7 +10,7 @@ public class PhoneBook {
     private ArrayList<ContactRecord> recordList = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
     private String filepath;
-    ObjectOutputStream oos = null;
+    ObjectOutputStream outputStream = null;
 
     public PhoneBook(String filepath) {
         this.filepath = filepath;
@@ -58,9 +58,9 @@ public class PhoneBook {
 
 
     public void persistData(ArrayList<ContactRecord> recordList) throws IOException {
-        oos = new ObjectOutputStream(new FileOutputStream(filepath));
+        outputStream = new ObjectOutputStream(new FileOutputStream(filepath));
         if (filepath.length() > 0) {
-            oos.writeObject(recordList);
+            outputStream.writeObject(recordList);
         }
     }
 
